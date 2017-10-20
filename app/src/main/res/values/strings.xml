@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">moviedb</string>
+    <string name="error_loading_movies">Loading movies error</string>
+</resources>

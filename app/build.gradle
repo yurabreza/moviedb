@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'realm-android'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+    signingConfigs {
+        config {
+            keyAlias jks.keyAlias
+            keyPassword jks.keyPassword
+            storeFile file(jks.storeFile)
+            storePassword jks.storePassword
+        }
+    }
+    defaultConfig {
+        applicationId "com.moviedb"
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionName VERSION_NAME
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
+        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+        buildConfigField "String", "API_KEY_V3", '"c3f694a7d2c808bac54488c4b743a7fc"'
+        buildConfigField "String", "API_KEY_V4", '"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2Y2OTRhN2QyYzgwOGJhYzU0NDg4YzRiNzQzYTdmYyIsInN1YiI6IjU5ZTlmMWI2YzNhMzY4MjdmYTAxMDMzMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JWyxcqOwqw3LeZ3gXZ71J4vhCUmLvNyHUQpp3it0UOg"'
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    productFlavors {
+    }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${espressoVersion}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:cardview-v7:${supportLibVersion}"
+    compile "com.android.support:recyclerview-v7:${supportLibVersion}"
+    //ButterKnife
+    compile "com.jakewharton:butterknife:${butterKnifeVersion}"
+    apt "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
+    //Reactive
+    compile "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    compile "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+    //Dagger2
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    //Picasso
+    compile "com.squareup.picasso:picasso:${picassoVersion}"
+    //Retrofit
+    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${converterGson}"
+    compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${rxJavaAdapter}"
+    compile "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+    testCompile "junit:junit:${junitVersion}"
+}
+
