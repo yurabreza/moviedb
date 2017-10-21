@@ -8,4 +8,5 @@ import io.reactivex.Observable;
 
 public interface MoviesRepository {
     Observable<List<Movie>> movies();
+    Observable<Movie> movieById(Integer id);
 }

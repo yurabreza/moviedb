@@ -14,8 +14,8 @@ import dagger.Provides;
 public class DataModule {
 
     @Provides
-    MoviesRepository provideYahooStockRepository(MoviesDbService yahooStockService) {
-        return new MoviesRepositoryImpl(yahooStockService);
+    MoviesRepository provideYahooStockRepository(MoviesDbService moviesDbService) {
+        return new MoviesRepositoryImpl(moviesDbService);
     }
 }
 

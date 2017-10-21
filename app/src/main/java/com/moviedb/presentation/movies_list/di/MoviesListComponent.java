@@ -1,5 +1,6 @@
 package com.moviedb.presentation.movies_list.di;
 
+import com.moviedb.presentation.PerActivity;
 import com.moviedb.presentation.movies_list.MoviesListActivity;
 
 import dagger.Subcomponent;

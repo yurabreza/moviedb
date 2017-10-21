@@ -1,36 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_root"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/small_padding"
-        android:textColor="@color/color_black"
-        android:textStyle="bold"
-        tools:text="Interception"/>
+        android:layout_margin="8dp"
+        app:cardElevation="@dimen/cardElevation">
 
-    <ImageView
-        android:id="@+id/iv_image"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:padding="@dimen/small_padding"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/small_padding"
-        tools:text="This is very interesting moview trala la la"/>
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/small_padding"
+                android:textColor="@color/color_black"
+                android:textStyle="bold"
+                tools:text="Interception"/>
 
-    <TextView
-        tools:text="as;lkdfg"
-        android:id="@+id/tv_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/small_padding"/>
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/small_padding"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/small_padding"
+                    tools:text="This is very interesting moview trala la la"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/small_padding"
+                tools:text="as;lkdfg"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_heigth"
+                android:background="@color/light_gray"/>
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/small_padding"
+                android:src="@drawable/selector_like"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

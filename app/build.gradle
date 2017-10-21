@@ -22,6 +22,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
         buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+        buildConfigField "String", "BASE_IMAGE_URL", '"http://image.tmdb.org/t/p/w185/"'
         buildConfigField "String", "API_KEY_V3", '"c3f694a7d2c808bac54488c4b743a7fc"'
         buildConfigField "String", "API_KEY_V4", '"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2Y2OTRhN2QyYzgwOGJhYzU0NDg4YzRiNzQzYTdmYyIsInN1YiI6IjU5ZTlmMWI2YzNhMzY4MjdmYTAxMDMzMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JWyxcqOwqw3LeZ3gXZ71J4vhCUmLvNyHUQpp3it0UOg"'
     }
@@ -52,6 +53,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
     compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile "com.android.support:recyclerview-v7:${supportLibVersion}"
+    compile "com.android.support:cardview-v7:${supportLibVersion}"
     //ButterKnife
     compile "com.jakewharton:butterknife:${butterKnifeVersion}"
     apt "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"

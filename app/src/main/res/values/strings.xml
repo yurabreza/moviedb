@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">moviedb</string>
     <string name="error_loading_movies">Loading movies error</string>
+    <string name="label_rating">Rating : %1$s</string>
+    <string name="exception_message_generic">There was an applicatoin error</string>
+    <string name="exception_message_no_connection">There is no internet connection</string>
+    <string name="exception_message_movie_not_found">Cannot retrieve movie data. Check your internet connection</string>
 </resources>
