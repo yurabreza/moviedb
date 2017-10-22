@@ -63,4 +63,16 @@ public class Movie {
     public void setRating(String rating) {
         this.rating = rating;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", movieId=" + movieId +
+                ", description='" + description + '\'' +
+                ", posterUrl='" + posterUrl + '\'' +
+                ", rating='" + rating + '\'' +
+                ", isFavorite=" + isFavorite +
+                '}';
+    }
 }

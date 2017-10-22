@@ -21,7 +21,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposables;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
 
@@ -34,11 +33,8 @@ public class MoviesRepositoryImpl implements MoviesRepository {
 
     public MoviesRepositoryImpl(MoviesDbService moviesService) {
         mMoviesDbService = moviesService;
-        RealmConfiguration config1 = new RealmConfiguration.Builder()
-                .name("same_name")
-                .schemaVersion(3)
-                .build();
-        mRealm = Realm.getInstance(config1);
+
+        mRealm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -68,8 +64,8 @@ public class MoviesRepositoryImpl implements MoviesRepository {
 
     @Override
     public Observable<Boolean> deleteMovieFromFavorites(Movie movie) {
-        final RealmResults<MovieRealm> movieId = mRealm.where(MovieRealm.class).equalTo(MOVIE_ID, movie.getMovieId()).findAll();
-        return Observable.just(movieId.deleteAllFromRealm());
+        mRealm.executeTransaction(realm -> mRealm.where(MovieRealm.class).equalTo(MOVIE_ID, movie.getMovieId()).findAll().deleteAllFromRealm());
+        return Observable.just(true);
     }
 
     @Override

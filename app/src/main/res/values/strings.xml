@@ -5,4 +5,5 @@
     <string name="exception_message_generic">There was an applicatoin error</string>
     <string name="exception_message_no_connection">There is no internet connection</string>
     <string name="exception_message_movie_not_found">Cannot retrieve movie data. Check your internet connection</string>
+    <string name="favorite_movies">Favorite Movies</string>
 </resources>

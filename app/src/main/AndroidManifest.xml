@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".presentation.movie_details.MovieDetailsActivity">
         </activity>
+        <activity android:name=".presentation.favorites.FavoriteMoviesActivity">
+        </activity>
     </application>
 
 </manifest>

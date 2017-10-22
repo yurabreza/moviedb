@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -14,6 +17,7 @@ import com.moviedb.domain.exception.DefaultErrorBundle;
 import com.moviedb.domain.model.Movie;
 import com.moviedb.presentation.app.MainApp;
 import com.moviedb.presentation.exception.ErrorMessageFactory;
+import com.moviedb.presentation.favorites.FavoriteMoviesActivity;
 import com.moviedb.presentation.movie_details.MovieDetailsActivity;
 import com.moviedb.presentation.movies_list.adapter.MoviesListAdapter;
 import com.moviedb.presentation.movies_list.adapter.MoviesListInteractionListener;
@@ -34,8 +38,7 @@ public class MoviesListActivity extends AppCompatActivity implements MoviesListV
     private ArrayList<Movie> mMovies = new ArrayList<>();
     private MoviesListAdapter mAdapter;
 
-    @Inject
-    MoviesListPresenter mPresenter;
+    @Inject MoviesListPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,22 @@ public class MoviesListActivity extends AppCompatActivity implements MoviesListV
         mAdapter = new MoviesListAdapter(mMovies);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_cart) {
+            startActivity(FavoriteMoviesActivity.getCallingIntent(this));
+            return true;
+        }
+        return false;
     }
 
     //region MoviesListView
@@ -87,8 +106,11 @@ public class MoviesListActivity extends AppCompatActivity implements MoviesListV
     public void updateFavorites(List<Movie> movies) {
         for (Movie favMovie : movies) {
             for (Movie movie : mMovies) {
+                Log.d(TAG, "updateFavorites: " + movie.getMovieId());
+                Log.d(TAG, "updateFavorites: " + favMovie.getMovieId());
                 if (movie.getMovieId().equals(favMovie.getMovieId())) {
                     movie.setFavorite(true);
+                    Log.d(TAG, "updateFavorites: " + movie.toString());
                     mAdapter.notifyItemChanged(mMovies.indexOf(movie));
                 }
             }

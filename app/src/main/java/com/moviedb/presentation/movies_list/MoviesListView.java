@@ -11,8 +11,6 @@ import java.util.List;
 public interface MoviesListView extends BaseView, HasProgress {
     void moviesListLoadSuccess(List<Movie> movies);
 
-
-
     void displayError(DefaultErrorBundle defaultErrorBundle);
 
     void updateFavorites(List<Movie> movies);
