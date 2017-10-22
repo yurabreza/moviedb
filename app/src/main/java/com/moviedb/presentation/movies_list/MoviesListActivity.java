@@ -10,9 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.moviedb.R;
-import com.moviedb.app.MainApp;
 import com.moviedb.domain.exception.DefaultErrorBundle;
 import com.moviedb.domain.model.Movie;
+import com.moviedb.presentation.app.MainApp;
 import com.moviedb.presentation.exception.ErrorMessageFactory;
 import com.moviedb.presentation.movie_details.MovieDetailsActivity;
 import com.moviedb.presentation.movies_list.adapter.MoviesListAdapter;
@@ -82,22 +82,34 @@ public class MoviesListActivity extends AppCompatActivity implements MoviesListV
         String errorMessage = ErrorMessageFactory.create(this, defaultErrorBundle.getException());
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void updateFavorites(List<Movie> movies) {
+        for (Movie favMovie : movies) {
+            for (Movie movie : mMovies) {
+                if (movie.getMovieId().equals(favMovie.getMovieId())) {
+                    movie.setFavorite(true);
+                    mAdapter.notifyItemChanged(mMovies.indexOf(movie));
+                }
+            }
+        }
+    }
     //endregion
 
     //region MoviesListInteractionListener
     @Override
-    public void setFavorite(Integer id) {
-
+    public void setFavorite(Movie movie) {
+        mPresenter.setMoviesFavorite(movie);
     }
 
     @Override
-    public void unSetFavorite(Integer id) {
-
+    public void unSetFavorite(Movie movie) {
+        mPresenter.unsetMovieFavorite(movie);
     }
 
     @Override
-    public void selectMovie(Integer id) {
-        startActivity(MovieDetailsActivity.getCallingIntent(MoviesListActivity.this, id));
+    public void selectMovie(Movie movie) {
+        startActivity(MovieDetailsActivity.getCallingIntent(MoviesListActivity.this, movie.getMovieId()));
     }
     //endregion
 

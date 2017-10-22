@@ -2,6 +2,7 @@ package com.moviedb.data.di;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.moviedb.BuildConfig;
+import com.moviedb.data.ApiKeyInterceptor;
 import com.moviedb.data.api.MoviesDbService;
 
 import javax.inject.Singleton;
@@ -24,7 +25,6 @@ public class ApiModule {
     }
 
     // FIXME: 20.10.17 provide both interceptors
-
     @Provides
     OkHttpClient provideOkHttpClient(Interceptor interceptor1) {
         return new OkHttpClient.Builder()

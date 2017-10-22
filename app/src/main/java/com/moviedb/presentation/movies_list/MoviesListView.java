@@ -14,4 +14,6 @@ public interface MoviesListView extends BaseView, HasProgress {
 
 
     void displayError(DefaultErrorBundle defaultErrorBundle);
+
+    void updateFavorites(List<Movie> movies);
 }

@@ -1,11 +1,11 @@
-package com.moviedb.app.di;
+package com.moviedb.presentation.app.di;
 
 
-import com.moviedb.app.MainApp;
 import com.moviedb.data.executor.JobExecutor;
 import com.moviedb.domain.executor.PostExecutionThread;
 import com.moviedb.domain.executor.ThreadExecutor;
 import com.moviedb.presentation.UIThread;
+import com.moviedb.presentation.app.MainApp;
 
 import javax.inject.Singleton;
 

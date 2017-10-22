@@ -1,4 +1,4 @@
-package com.moviedb.data.di;
+package com.moviedb.data;
 
 import android.util.Log;
 

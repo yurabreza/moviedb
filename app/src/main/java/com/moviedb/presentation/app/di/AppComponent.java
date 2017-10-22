@@ -1,4 +1,4 @@
-package com.moviedb.app.di;
+package com.moviedb.presentation.app.di;
 
 import com.moviedb.data.di.ApiModule;
 import com.moviedb.data.di.DataModule;

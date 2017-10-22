@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.moviedb.BuildConfig;
 import com.moviedb.R;
-import com.moviedb.app.MainApp;
 import com.moviedb.domain.exception.DefaultErrorBundle;
 import com.moviedb.domain.model.Movie;
+import com.moviedb.presentation.app.MainApp;
 import com.moviedb.presentation.exception.ErrorMessageFactory;
 import com.squareup.picasso.Picasso;
 
@@ -92,7 +92,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
     @Override
     protected void onDestroy() {
         mMovieDetailsPresenter.onDetach();
-        MainApp.getDependencyGraph().releaseMovieDeatilsComponent();
+        MainApp.getDependencyGraph().releaseMovieDetailsComponent();
         super.onDestroy();
     }
 }

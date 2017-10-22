@@ -1,6 +1,6 @@
-package com.moviedb.app.di;
+package com.moviedb.presentation.app.di;
 
-import com.moviedb.app.MainApp;
+import com.moviedb.presentation.app.MainApp;
 import com.moviedb.presentation.movie_details.di.MovieDetailsComponent;
 import com.moviedb.presentation.movies_list.di.MoviesListComponent;
 
@@ -31,7 +31,7 @@ public class DependencyGraph {
         mMoviesListComponent = null;
     }
 
-    public void releaseMovieDeatilsComponent() {
+    public void releaseMovieDetailsComponent() {
         mMovieDetailsComponent = null;
     }
 }

@@ -1,12 +1,10 @@
-package com.moviedb.app;
+package com.moviedb.presentation.app;
 
 import android.app.Application;
 
-import com.moviedb.app.di.DependencyGraph;
+import com.moviedb.presentation.app.di.DependencyGraph;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.rx.RealmObservableFactory;
 
 
 public class MainApp extends Application {
@@ -18,10 +16,7 @@ public class MainApp extends Application {
         super.onCreate();
         mDependencyGraph = new DependencyGraph(this);
 
-        RealmConfiguration configuration = new RealmConfiguration.Builder(this)
-                .rxFactory(new RealmObservableFactory())
-                .build();
-        Realm.setDefaultConfiguration(configuration);
+        Realm.init(this);
     }
 
     public static DependencyGraph getDependencyGraph() {

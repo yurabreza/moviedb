@@ -72,11 +72,10 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Mo
         void onImageClick(View view) {
             if (mListener == null) throw new RuntimeException("mListener not set");
             final Movie movie = mMovies.get(getAdapterPosition());
-            final Integer movieId = movie.getMovieId();
-            if (view.isSelected()) {
-                mListener.setFavorite(movieId);
+            if (!view.isSelected()) {
+                mListener.setFavorite(movie);
             } else {
-                mListener.unSetFavorite(movieId);
+                mListener.unSetFavorite(movie);
             }
             final boolean newSelectedState = !view.isSelected();
             view.setSelected(newSelectedState);
@@ -86,7 +85,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Mo
         @OnClick(R.id.cv_root)
         void onCardClick() {
             if (mListener == null) throw new RuntimeException("mListener not set");
-            mListener.selectMovie(mMovies.get(getAdapterPosition()).getMovieId());
+            mListener.selectMovie(mMovies.get(getAdapterPosition()));
         }
     }
 }

@@ -1,9 +1,11 @@
 package com.moviedb.presentation.movies_list.adapter;
 
+import com.moviedb.domain.model.Movie;
+
 public interface MoviesListInteractionListener {
-    void setFavorite(Integer id);
+    void setFavorite(Movie movie);
 
-    void unSetFavorite(Integer id);
+    void unSetFavorite(Movie movie);
 
-    void selectMovie(Integer id);
+    void selectMovie(Movie movie);
 }
