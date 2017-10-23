@@ -28,12 +28,12 @@ public class FavoriteMoviesPresenter extends BasePresenter<FavoriteMoviesView> {
     private DisposableObserver favoritesObserver = new DisposableObserver<List<Movie>>() {
         @Override
         public void onNext(@NonNull List<Movie> movies) {
-            mView.updateFavorites(movies);
+            if (mView != null) mView.updateFavorites(movies);
         }
 
         @Override
         public void onError(@NonNull Throwable e) {
-            mView.showErrorMessage(new DefaultErrorBundle((Exception) e));
+            if (mView != null) mView.showErrorMessage(new DefaultErrorBundle((Exception) e));
         }
 
         @Override
